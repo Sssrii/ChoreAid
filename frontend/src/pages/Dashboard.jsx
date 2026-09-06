@@ -7,6 +7,24 @@ import { getServiceIcon } from '../utils/serviceIcons';
 import api from '../api/axios';
 import { Navigate } from 'react-router-dom';
 
+
+function ProviderRedirect() {
+  const [checked, setChecked] = useState(false);
+  const [hasProfile, setHasProfile] = useState(false);
+  const token = localStorage.getItem('token');
+
+  useEffect(() => {
+    api
+      .get('/providers/profile', { headers: { Authorization: `Bearer ${token}` } })
+      .then(() => setHasProfile(true))
+      .catch(() => setHasProfile(false))
+      .finally(() => setChecked(true));
+  }, []);
+
+  if (!checked) return <p style={{ padding: 'var(--space-6)' }}>Loading...</p>;
+  return <Navigate to={hasProfile ? '/provider-dashboard' : '/provider-setup'} />;
+}
+
 function Dashboard() {
   const role = localStorage.getItem('role');
   const navigate = useNavigate();
@@ -27,7 +45,7 @@ function Dashboard() {
 
 
 if (role === 'provider') {
-  return <Navigate to="/provider-dashboard" />;
+  return <ProviderRedirect />;
 }
 if (role === 'admin') {
   return <Navigate to="/admin" />;

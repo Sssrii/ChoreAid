@@ -10,6 +10,7 @@ import ProviderJobs from './pages/ProviderJobs';
 import RequestTracking from './pages/RequestTracking';
 import AdminDashboard from './pages/AdminDashboard';
 import Home from './pages/Home';
+import ProviderSetup from './pages/ProviderSetup';
 
 function App() {
   return (
@@ -70,6 +71,14 @@ function App() {
   element={
     <ProtectedRoute>
       <AdminDashboard />
+    </ProtectedRoute>
+  }
+/>
+<Route
+  path="/provider-setup"
+  element={
+    <ProtectedRoute>
+      <ProviderSetup />
     </ProtectedRoute>
   }
 />
