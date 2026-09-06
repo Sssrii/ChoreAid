@@ -220,7 +220,7 @@ function Home() {
     <div className="hero-actions">
       <button
         className="hero-primary-btn"
-        onClick={() => navigate("/services")}
+        onClick={() => navigate("/signup")}
       >
         Find Services
       </button>
