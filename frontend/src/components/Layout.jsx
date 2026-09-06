@@ -13,9 +13,8 @@ const customerNav = [
 ];
 
 const providerNav = [
-  { to: '/dashboard', label: 'Dashboard', icon: Home },
+  { to: '/provider-dashboard', label: 'Dashboard', icon: Home },
   { to: '/provider-jobs', label: 'My Jobs', icon: ClipboardList },
-  { to: '/provider-dashboard', label: 'Nearby Requests', icon: MapPin },
 ];
 
 const adminNav = [
