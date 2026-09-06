@@ -81,5 +81,17 @@ const findNearbyProviders = async (req, res) => {
 };
 
 
+const getMyProfile = async (req, res) => {
+  try {
+    const profile = await ProviderProfile.findOne({ user: req.user.id });
+    if (!profile) {
+      return res.status(404).json({ success: false, message: 'Provider profile not found' });
+    }
+    res.status(200).json({ success: true, data: profile });
+  } catch (err) {
+    res.status(500).json({ success: false, message: err.message });
+  }
+};
 
-module.exports = { createOrUpdateProfile, toggleAvailability, updateLocation, findNearbyProviders };
+
+module.exports = { createOrUpdateProfile, toggleAvailability, updateLocation, findNearbyProviders, getMyProfile };
