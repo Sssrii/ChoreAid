@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+const protect = require('../middleware/authMiddleware');
 const { createOrUpdateProfile, toggleAvailability, updateLocation, findNearbyProviders, getMyProfile } = require('../controllers/providerController');
 router.put('/profile', protect, createOrUpdateProfile);
 router.put('/availability', protect, toggleAvailability);
